@@ -1,35 +1,30 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Be My Valentine?</title>
-
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Be My Valentine?</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <div id="noise"></div>
+  <canvas id="fx"></canvas>
 
-<div id="noise"></div>
-<canvas id="fx"></canvas>
+  <main class="card">
+    <div class="badge">💘 Confidential Invitation</div>
 
-<main class="card">
+    <h1>Will you be my Valentine?</h1>
+    <p class="sub">Choose wisely. Some choices shape destiny.</p>
 
-<div class="badge">💘 Confidential Invitation</div>
+    <div class="btn-row" id="arena">
+      <button id="yesBtn" class="btn yes" type="button">YES</button>
+      <button id="noBtn" class="btn no" type="button">NO</button>
+    </div>
 
-<h1>Will you be my Valentine?</h1>
-<p class="sub">Choose wisely. Some choices shape destiny.</p>
+    <p class="hint">The “No” button is… unavailable.</p>
+  </main>
 
-<div class="btn-row">
-<button id="yesBtn" class="btn yes">YES</button>
-<button id="noBtn" class="btn no">NO</button>
-</div>
-
-<p class="hint">The "No" button is emotionally unavailable.</p>
-
-</main>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
