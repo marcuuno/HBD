@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Correct Answer</title>
+
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<div id="noise"></div>
+<canvas id="fx"></canvas>
+
+<main class="card">
+
+<h1>Excellent Decision 💘</h1>
+<p class="sub">Now complete confirmation.</p>
+
+<p>
+My Instagram:
+<a href="https://instagram.com/marcuschelete" target="_blank">
+@marcuschelete
+</a>
+</p>
+
+<hr>
+
+<form id="valForm"
+action="https://docs.google.com/forms/d/e/1FAIpQLScHE0J47-0kBXvAzXLrVqZy6jJO_XUGciEnIK1OSdCQ8m1I8Q/formResponse"
+method="POST"
+target="hidden_iframe">
+
+<label>
+Your Phone Number
+<input name="entry.225535345" required placeholder="+267...">
+</label>
+
+<label>
+Why did you say yes?
+<textarea name="entry.464624563" required rows="4"></textarea>
+</label>
+
+<label>
+Instagram Username (optional)
+<input name="entry.916598438">
+</label>
+
+<label>
+Preferred Contact Method
+<select name="entry.1230623056">
+<option>WhatsApp</option>
+<option>Instagram</option>
+<option>Phone Call</option>
+<option>Text Message (SMS)</option>
+</select>
+</label>
+
+<button class="btn yes" type="submit">Submit</button>
+
+</form>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<div id="done" style="display:none;">
+✅ Submission received. I will contact you soon.
+</div>
+
+</main>
+
+<script>
+const form = document.getElementById("valForm");
+const done = document.getElementById("done");
+
+form.addEventListener("submit", () => {
+setTimeout(() => {
+form.style.display = "none";
+done.style.display = "block";
+}, 700);
+});
+</script>
+
+</body>
+</html>
+s
