@@ -6,71 +6,107 @@
 <title>Get Well Soon</title>
 
 <style>
-    body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(to top, #fceff9, #e0f7fa);
-        overflow: hidden;
-        font-family: "Georgia", serif;
-    }
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to top,#fdf0f5,#e0f7fa);
+    overflow:hidden;
+    font-family:"Georgia",serif;
+}
 
-    h1 {
-        position: absolute;
-        top: 8%;
-        font-size: 3rem;
-        color: #5c5470;
-        opacity: 0;
-        animation: fadeIn 3s ease forwards;
-        letter-spacing: 2px;
-    }
+h1{
+    position:absolute;
+    top:7%;
+    font-size:3rem;
+    letter-spacing:3px;
+    color:#5c5470;
+    opacity:0;
+    animation:fadeIn 3s ease forwards;
+    text-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
 
-    @keyframes fadeIn {
-        to { opacity: 1; }
-    }
+@keyframes fadeIn{to{opacity:1;}}
 
-    .bouquet {
-        width: 300px;
-        height: 400px;
-    }
+svg{width:520px;height:620px;}
 
-    .stem {
-        stroke: #3a7d44;
-        stroke-width: 4;
-        stroke-dasharray: 200;
-        stroke-dashoffset: 200;
-        animation: growStem 3s ease forwards;
-    }
+.stem{
+    stroke:#3a7d44;
+    stroke-width:4;
+    fill:none;
+    stroke-dasharray:600;
+    stroke-dashoffset:600;
+    animation:growStem 4s ease forwards;
+}
 
-    @keyframes growStem {
-        to { stroke-dashoffset: 0; }
-    }
+@keyframes growStem{to{stroke-dashoffset:0;}}
 
-    .flower {
-        transform-origin: center;
-        transform: scale(0);
-        animation: bloom 1.5s ease forwards;
-    }
+.leaf{
+    fill:#6ab04c;
+    transform-origin:center;
+    transform:scale(0);
+    animation:unfold 1.5s ease forwards;
+    animation-delay:3s;
+}
 
-    .flower:nth-child(3) { animation-delay: 2.5s; }
-    .flower:nth-child(4) { animation-delay: 2.8s; }
-    .flower:nth-child(5) { animation-delay: 3.1s; }
+@keyframes unfold{to{transform:scale(1);}}
 
-    @keyframes bloom {
-        to { transform: scale(1); }
-    }
+/* ROSE PETALS */
+.petal{
+    transform-origin:center;
+    transform:scale(0);
+    animation:bloom 1.2s ease forwards;
+    filter:drop-shadow(0 8px 10px rgba(0,0,0,0.2));
+}
 
-    .float {
-        animation: float 4s ease-in-out infinite;
-    }
+.petal:nth-child(1){animation-delay:3.8s;}
+.petal:nth-child(2){animation-delay:4s;}
+.petal:nth-child(3){animation-delay:4.2s;}
+.petal:nth-child(4){animation-delay:4.4s;}
+.petal:nth-child(5){animation-delay:4.6s;}
 
-    @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
+@keyframes bloom{
+    0%{transform:scale(0);}
+    70%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+}
+
+/* Ribbon animation */
+.ribbon{
+    stroke:#c44569;
+    stroke-width:12;
+    fill:none;
+    stroke-dasharray:800;
+    stroke-dashoffset:800;
+    animation:wrapRibbon 3s ease forwards;
+    animation-delay:5.5s;
+}
+
+@keyframes wrapRibbon{
+    to{stroke-dashoffset:0;}
+}
+
+.bow{
+    transform-origin:center;
+    transform:scale(0);
+    animation:tieBow 1s ease forwards;
+    animation-delay:8.5s;
+}
+
+@keyframes tieBow{
+    to{transform:scale(1);}
+}
+
+.float{
+    animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
 </style>
 </head>
 
@@ -78,28 +114,67 @@
 
 <h1>Get Well Soon</h1>
 
-<svg class="bouquet float" viewBox="0 0 300 400">
+<svg class="float" viewBox="0 0 520 620">
 
-    <!-- Stems -->
-    <line class="stem" x1="150" y1="350" x2="120" y2="200"/>
-    <line class="stem" x1="150" y1="350" x2="180" y2="210"/>
-    <line class="stem" x1="150" y1="350" x2="150" y2="180"/>
+<defs>
+<radialGradient id="roseGrad">
+<stop offset="0%" stop-color="#ffd6e0"/>
+<stop offset="100%" stop-color="#d6336c"/>
+</radialGradient>
+</defs>
 
-    <!-- Flowers -->
-    <g class="flower">
-        <circle cx="120" cy="200" r="20" fill="#ff8fab"/>
-        <circle cx="120" cy="200" r="8" fill="#ffd6e0"/>
-    </g>
+<!-- Stems -->
+<path class="stem" d="M260 620 Q200 450 240 320"/>
+<path class="stem" d="M260 620 Q320 450 290 310"/>
+<path class="stem" d="M260 620 Q260 450 260 280"/>
 
-    <g class="flower">
-        <circle cx="180" cy="210" r="22" fill="#a0c4ff"/>
-        <circle cx="180" cy="210" r="9" fill="#d0e8ff"/>
-    </g>
+<!-- Leaves -->
+<ellipse class="leaf" cx="220" cy="420" rx="18" ry="35"/>
+<ellipse class="leaf" cx="300" cy="400" rx="18" ry="35"/>
 
-    <g class="flower">
-        <circle cx="150" cy="180" r="24" fill="#caffbf"/>
-        <circle cx="150" cy="180" r="10" fill="#f1faee"/>
-    </g>
+<!-- Rose 1 -->
+<g>
+<path class="petal" fill="url(#roseGrad)"
+d="M240 320
+C210 290,210 250,240 230
+C270 250,270 290,240 320Z"/>
+<path class="petal" fill="url(#roseGrad)"
+d="M240 320
+C260 290,300 290,300 260
+C270 240,250 260,240 320Z"/>
+<path class="petal" fill="url(#roseGrad)"
+d="M240 320
+C220 290,180 290,180 260
+C210 240,230 260,240 320Z"/>
+</g>
+
+<!-- Rose 2 -->
+<g>
+<path class="petal" fill="url(#roseGrad)"
+d="M290 310
+C260 280,260 240,290 220
+C320 240,320 280,290 310Z"/>
+</g>
+
+<!-- Rose 3 -->
+<g>
+<path class="petal" fill="url(#roseGrad)"
+d="M260 280
+C230 250,230 210,260 190
+C290 210,290 250,260 280Z"/>
+</g>
+
+<!-- Ribbon Wrap -->
+<path class="ribbon"
+d="M200 500 Q260 470 320 500"/>
+
+<!-- Bow -->
+<g class="bow">
+<path fill="#c44569"
+d="M250 490 Q220 460 250 450 Q280 460 250 490Z"/>
+<path fill="#c44569"
+d="M270 490 Q300 460 270 450 Q240 460 270 490Z"/>
+</g>
 
 </svg>
 
