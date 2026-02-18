@@ -1,171 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get Well Soon</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Well Soon Bouquet</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f0f4ff, #e0e7ff);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-<style>
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:radial-gradient(circle at center,#111827,#030712);
-    overflow:hidden;
-    font-family:'Georgia',serif;
-}
+        h1 {
+            position: absolute;
+            top: 50px;
+            color: #5b21b6;
+            font-size: 4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeInDown 2s ease-out;
+        }
 
-h1{
-    position:absolute;
-    top:5%;
-    font-size:3rem;
-    color:#f8fafc;
-    letter-spacing:3px;
-    opacity:0;
-    animation:fadeIn 2.5s ease forwards;
-    text-shadow:0 0 30px rgba(255,255,255,0.3);
-}
+        .garden {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
 
-@keyframes fadeIn{to{opacity:1;}}
+        .flower {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform-origin: bottom center;
+            margin: 0 -15px; /* Overlap slightly for a bouquet look */
+        }
 
-svg{
-    width:700px;
-    height:720px;
-}
+        .stem {
+            width: 6px;
+            background: #2d6a4f;
+            height: 0; /* Animated */
+            border-radius: 3px;
+            animation: growStem 2s ease-out forwards;
+        }
 
-/* STEMS */
-.stem{
-    stroke:#22c55e;
-    stroke-width:4;
-    fill:none;
-    stroke-dasharray:1000;
-    stroke-dashoffset:1000;
-    animation:grow 3.5s ease forwards;
-}
+        .bloom {
+            position: absolute;
+            top: -40px;
+            transform: scale(0); /* Animated */
+            animation: bloom 1.5s ease-out forwards;
+            animation-delay: 1.5s;
+        }
 
-@keyframes grow{to{stroke-dashoffset:0;}}
+        /* Flower Variations */
+        .f1 .stem { height: 250px; animation-delay: 0.2s; }
+        .f2 .stem { height: 180px; animation-delay: 0.5s; }
+        .f3 .stem { height: 220px; animation-delay: 0.1s; }
+        .f4 .stem { height: 280px; animation-delay: 0.7s; }
+        .f5 .stem { height: 200px; animation-delay: 0.3s; }
+        .f6 .stem { height: 240px; animation-delay: 0.6s; }
+        .f7 .stem { height: 190px; animation-delay: 0.8s; }
+        .f8 .stem { height: 260px; animation-delay: 0.4s; }
 
-/* LEAVES */
-.leaf{
-    fill:#15803d;
-    transform-origin:center;
-    transform:scale(0);
-    animation:leafGrow 1s ease forwards;
-    animation-delay:3.2s;
-}
+        .f1 .bloom { animation-delay: 1.8s; }
+        .f2 .bloom { animation-delay: 2.1s; }
+        .f3 .bloom { animation-delay: 1.7s; }
+        .f4 .bloom { animation-delay: 2.3s; }
+        .f5 .bloom { animation-delay: 1.9s; }
+        .f6 .bloom { animation-delay: 2.2s; }
+        .f7 .bloom { animation-delay: 2.4s; }
+        .f8 .bloom { animation-delay: 2.0s; }
 
-@keyframes leafGrow{to{transform:scale(1);}}
+        @keyframes growStem {
+            from { height: 0; }
+            to { height: var(--final-height); }
+        }
 
-/* ROSE PETALS */
-.petal{
-    transform-origin:center;
-    transform:scale(0);
-    animation:bloom 1.2s ease forwards;
-    filter:drop-shadow(0 0 18px rgba(255,0,100,0.35));
-}
+        @keyframes bloom {
+            0% { transform: scale(0) rotate(0deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
 
-@keyframes bloom{
-    0%{transform:scale(0);}
-    70%{transform:scale(1.1);}
-    100%{transform:scale(1);}
-}
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-/* Stagger bloom timing */
-.rose:nth-of-type(1) .petal{animation-delay:3.5s;}
-.rose:nth-of-type(2) .petal{animation-delay:3.8s;}
-.rose:nth-of-type(3) .petal{animation-delay:4.1s;}
-.rose:nth-of-type(4) .petal{animation-delay:4.4s;}
-.rose:nth-of-type(5) .petal{animation-delay:4.7s;}
-.rose:nth-of-type(6) .petal{animation-delay:5s;}
-.rose:nth-of-type(7) .petal{animation-delay:5.3s;}
-.rose:nth-of-type(8) .petal{animation-delay:5.6s;}
-
-.float{
-    animation:float 6s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-18px);}
-}
-
-</style>
+        svg {
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+        }
+    </style>
 </head>
-
 <body>
 
-<h1>Get Well Soon</h1>
+    <h1>Get Well!</h1>
 
-<svg class="float" viewBox="0 0 700 720">
+    <div class="garden">
+        <div class="flower f1" style="--final-height: 250px;">
+            <div class="bloom">
+                <svg width="80" height="80" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="10" fill="#facc15" />
+                    <g fill="#7e22ce">
+                        <ellipse cx="50" cy="20" rx="15" ry="25" />
+                        <ellipse cx="50" cy="80" rx="15" ry="25" />
+                        <ellipse cx="20" cy="50" rx="25" ry="15" />
+                        <ellipse cx="80" cy="50" rx="25" ry="15" />
+                        <ellipse cx="30" cy="30" rx="20" ry="20" transform="rotate(45 30 30)" />
+                        <ellipse cx="70" cy="70" rx="20" ry="20" transform="rotate(45 70 70)" />
+                        <ellipse cx="70" cy="30" rx="20" ry="20" transform="rotate(-45 70 30)" />
+                        <ellipse cx="30" cy="70" rx="20" ry="20" transform="rotate(-45 30 70)" />
+                    </g>
+                </svg>
+            </div>
+            <div class="stem"></div>
+        </div>
 
-<defs>
-<radialGradient id="roseGrad">
-<stop offset="0%" stop-color="#ffccd5"/>
-<stop offset="60%" stop-color="#fb7185"/>
-<stop offset="100%" stop-color="#be123c"/>
-</radialGradient>
-</defs>
+        <div class="flower f2" style="--final-height: 180px;">
+            <div class="bloom">
+                <svg width="70" height="70" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="10" fill="#fef08a" />
+                    <g fill="#a855f7">
+                        <ellipse cx="50" cy="25" rx="12" ry="20" />
+                        <ellipse cx="50" cy="75" rx="12" ry="20" />
+                        <ellipse cx="25" cy="50" rx="20" ry="12" />
+                        <ellipse cx="75" cy="50" rx="20" ry="12" />
+                    </g>
+                </svg>
+            </div>
+            <div class="stem"></div>
+        </div>
 
-<!-- Stems -->
-<path class="stem" d="M350 720 Q280 540 310 400"/>
-<path class="stem" d="M350 720 Q420 540 390 390"/>
-<path class="stem" d="M350 720 Q240 550 260 350"/>
-<path class="stem" d="M350 720 Q470 550 450 340"/>
-<path class="stem" d="M350 720 Q350 560 350 320"/>
+        <div class="flower f3" style="--final-height: 220px;">
+            <div class="bloom">
+                <svg width="90" height="90" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="12" fill="#eab308" />
+                    <g fill="#581c87" opacity="0.9">
+                        <ellipse cx="50" cy="20" rx="15" ry="30" />
+                        <ellipse cx="50" cy="80" rx="15" ry="30" />
+                        <ellipse cx="20" cy="50" rx="30" ry="15" />
+                        <ellipse cx="80" cy="50" rx="30" ry="15" />
+                    </g>
+                </svg>
+            </div>
+            <div class="stem"></div>
+        </div>
 
-<!-- Leaves -->
-<path class="leaf" d="M290 500 Q250 470 300 460 Q320 490 290 500Z"/>
-<path class="leaf" d="M410 490 Q450 460 400 450 Q380 480 410 490Z"/>
+        <div class="flower f4" style="--final-height: 280px;">
+            <div class="bloom">
+                <svg width="85" height="85" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="10" fill="#fbbf24" />
+                    <g fill="#c026d3">
+                        <ellipse cx="50" cy="20" rx="15" ry="25" />
+                        <ellipse cx="50" cy="80" rx="15" ry="25" />
+                        <ellipse cx="20" cy="50" rx="25" ry="15" />
+                        <ellipse cx="80" cy="50" rx="25" ry="15" />
+                    </g>
+                </svg>
+            </div>
+            <div class="stem"></div>
+        </div>
 
-<!-- ROSES -->
-<!-- Functionally each rose has 5 layered spiral petals -->
+        <div class="flower f5" style="--final-height: 200px;">
+            <div class="bloom">
+                <svg width="75" height="75" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="8" fill="#fde047" />
+                    <g fill="#d8b4fe">
+                        <circle cx="50" cy="20" r="15" />
+                        <circle cx="50" cy="80" r="15" />
+                        <circle cx="20" cy="50" r="15" />
+                        <circle cx="80" cy="50" r="15" />
+                    </g>
+                </svg>
+            </div>
+            <div class="stem"></div>
+        </div>
 
-<g class="rose" transform="translate(310,400)">
-    <path class="petal" fill="url(#roseGrad)" d="M0 -40 C-30 -50 -50 -10 0 10 C50 -10 30 -50 0 -40Z"/>
-    <path class="petal" fill="url(#roseGrad)" d="M0 -30 C-40 -20 -40 20 0 25 C40 20 40 -20 0 -30Z"/>
-    <path class="petal" fill="url(#roseGrad)" d="M0 -15 C-25 -5 -25 15 0 20 C25 15 25 -5 0 -15Z"/>
-</g>
+        <div class="flower f6" style="--final-height: 240px;">
+            <div class="bloom">
+                <svg width="80" height="80" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="10" fill="#fbbf24" />
+                    <g fill="#6b21a8">
+                        <ellipse cx="50" cy="15" rx="10" ry="30" />
+                        <ellipse cx="50" cy="85" rx="10" ry="30" />
+                        <ellipse cx="15" cy="50" rx="30" ry="10" />
+                        <ellipse cx="85" cy="50" rx="30" ry="10" />
+                    </g>
+                </svg>
+            </div>
+            <div class="stem"></div>
+        </div>
 
-<g class="rose" transform="translate(390,390)">
-    <path class="petal" fill="url(#roseGrad)" d="M0 -45 C-35 -55 -55 -10 0 15 C55 -10 35 -55 0 -45Z"/>
-    <path class="petal" fill="url(#roseGrad)" d="M0 -30 C-45 -10 -40 25 0 30 C40 25 45 -10 0 -30Z"/>
-    <path class="petal" fill="url(#roseGrad)" d="M0 -15 C-30 -5 -30 15 0 20 C30 15 30 -5 0 -15Z"/>
-</g>
+        <div class="flower f7" style="--final-height: 190px;">
+            <div class="bloom">
+                <svg width="70" height="70" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="8" fill="#facc15" />
+                    <g fill="#9333ea">
+                        <circle cx="35" cy="35" r="15" />
+                        <circle cx="65" cy="65" r="15" />
+                        <circle cx="65" cy="35" r="15" />
+                        <circle cx="35" cy="65" r="15" />
+                    </g>
+                </svg>
+            </div>
+            <div class="stem"></div>
+        </div>
 
-<g class="rose" transform="translate(260,350)">
-    <path class="petal" fill="url(#roseGrad)" d="M0 -40 C-30 -50 -50 -10 0 10 C50 -10 30 -50 0 -40Z"/>
-    <path class="petal" fill="url(#roseGrad)" d="M0 -25 C-40 -15 -40 20 0 25 C40 20 40 -15 0 -25Z"/>
-    <path class="petal" fill="url(#roseGrad)" d="M0 -10 C-25 0 -25 15 0 18 C25 15 25 0 0 -10Z"/>
-</g>
-
-<g class="rose" transform="translate(450,340)">
-    <path class="petal" fill="url(#roseGrad)" d="M0 -45 C-35 -55 -55 -15 0 15 C55 -15 35 -55 0 -45Z"/>
-    <path class="petal" fill="url(#roseGrad)" d="M0 -30 C-45 -10 -40 25 0 30 C40 25 45 -10 0 -30Z"/>
-    <path class="petal" fill="url(#roseGrad)" d="M0 -15 C-30 -5 -30 15 0 20 C30 15 30 -5 0 -15Z"/>
-</g>
-
-<g class="rose" transform="translate(350,320)">
-    <path class="petal" fill="url(#roseGrad)" d="M0 -50 C-40 -60 -60 -20 0 20 C60 -20 40 -60 0 -50Z"/>
-    <path class="petal" fill="url(#roseGrad)" d="M0 -35 C-50 -15 -45 30 0 35 C45 30 50 -15 0 -35Z"/>
-    <path class="petal" fill="url(#roseGrad)" d="M0 -20 C-35 -5 -35 20 0 25 C35 20 35 -5 0 -20Z"/>
-</g>
-
-<!-- Additional smaller cluster roses -->
-<g class="rose" transform="translate(330,370)">
-    <path class="petal" fill="url(#roseGrad)" d="M0 -30 C-20 -35 -35 -5 0 10 C35 -5 20 -35 0 -30Z"/>
-</g>
-
-<g class="rose" transform="translate(370,360)">
-    <path class="petal" fill="url(#roseGrad)" d="M0 -30 C-20 -35 -35 -5 0 10 C35 -5 20 -35 0 -30Z"/>
-</g>
-
-<g class="rose" transform="translate(300,360)">
-    <path class="petal" fill="url(#roseGrad)" d="M0 -30 C-20 -35 -35 -5 0 10 C35 -5 20 -35 0 -30Z"/>
-</g>
-
-</svg>
+        <div class="flower f8" style="--final-height: 260px;">
+            <div class="bloom">
+                <svg width="95" height="95" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="12" fill="#f59e0b" />
+                    <g fill="#4c1d95">
+                        <ellipse cx="50" cy="20" rx="18" ry="28" />
+                        <ellipse cx="50" cy="80" rx="18" ry="28" />
+                        <ellipse cx="20" cy="50" rx="28" ry="18" />
+                        <ellipse cx="80" cy="50" rx="28" ry="18" />
+                    </g>
+                </svg>
+            </div>
+            <div class="stem"></div>
+        </div>
+    </div>
 
 </body>
 </html>
